@@ -1,0 +1,22 @@
+<div class="container">    
+    <form [formGroup]="formularioViaje" (ngSubmit)="guardar()">
+        <div class="mb-3">
+            <label for="presupuesto" class="form-label">País destino</label>
+            <input type="text" class="form-control" id="pais" [ngClass]="{'is-invalid': hasErrors('pais', 'required')}" formControlName="pais">
+            <div class="text-danger" *ngIf="hasErrors('pais', 'required')">Campo presupuesto es obligatorio</div>
+        </div> 
+        <div class="mb-3">
+            <label for="presupuesto" class="form-label">Ciudad destino</label>
+            <input type="text" class="form-control" id="ciudad" [ngClass]="{'is-invalid': hasErrors('ciudad', 'required')}" formControlName="ciudad">
+            <div class="text-danger" *ngIf="hasErrors('ciudad', 'required')">Campo presupuesto es obligatorio</div>
+        </div> 
+        <div class="mb-3">
+            <label for="presupuesto" class="form-label">Presupuesto en COP</label>
+            <input type="number" class="form-control" id="presupuesto" [ngClass]="{'is-invalid': hasErrors('presupuesto', 'required') || hasErrors('presupuesto', 'min')}" formControlName="presupuesto">
+            <div class="text-danger" *ngIf="hasErrors('presupuesto', 'required')">Campo presupuesto es obligatorio</div>
+            <div class="text-danger" *ngIf="hasErrors('presupuesto', 'min')">Valor debe ser mayor a 0</div>
+        </div>
+        <p>Presupuesto en COP sería: {{ rates }} {{ dataCurrency }}</p>     
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

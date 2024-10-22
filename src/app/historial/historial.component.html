@@ -1,0 +1,25 @@
+<div class="container">
+    <h1>{{ 'HISTORIAL' | translate }}</h1>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">{{ 'COUNTRY' | translate }}</th>
+                <th scope="col">{{ 'CITY' | translate }}</th>
+                <th scope="col">{{ 'PRESUPUESTO' | translate }}</th>
+                <th scope="col">{{ 'FECHA' | translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let viaje of viajesList">
+                <th scope="row">{{ viaje.id }}</th>
+                <td>{{ viaje.pais }}</td>
+                <td>{{ viaje.ciudad }}</td>
+                <td>{{ viaje.presupuesto | currency:'COP':'symbol':'1.0-0' }}</td>
+                <td>{{ viaje.fecha }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>

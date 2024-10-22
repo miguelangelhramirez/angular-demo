@@ -1,0 +1,29 @@
+<div class="container">
+    <h1>{{ 'DESTINO' | translate }}</h1>
+    <br>
+    <form [formGroup]="formularioDestino" (ngSubmit)="guardar()">
+        <div class="mb-3">
+            <select id="pais" class="form-select" [ngClass]="{'is-invalid': hasErrors('pais', 'required')}" (change)="onCountryChange()" formControlName="pais">
+                <option disabled selected value="">{{ 'ESCOJA PAIS' | translate }}</option>
+                <option *ngFor="let pais of paisesList" [value]="pais.pais">
+                    {{ pais.pais }}
+                </option>
+            </select>
+            <div class="text-danger" *ngIf="hasErrors('pais', 'required')">{{ 'PAIS REQUIRED' | translate }}</div>
+        </div>
+        <div class="mb-3">
+            <select 
+            name="ciudad" 
+            class="form-select" 
+            [ngClass]="{'is-invalid': hasErrors('ciudad', 'required')}" 
+            formControlName="ciudad">
+                <option disabled selected value="">{{ 'ESCOJA CIUDAD' | translate }}</option>
+                <option *ngFor="let ciudad of ciudades" [value]="ciudad.ciudad">
+                    {{ ciudad.ciudad }}
+                </option>
+            </select>
+            <div class="text-danger" *ngIf="hasErrors('ciudad', 'required')">{{ 'CIUDAD REQUIRED' | translate }}</div>
+        </div>
+        <button type="submit" class="btn btn-primary">{{'NEXT' | translate}}</button>
+    </form>
+</div>

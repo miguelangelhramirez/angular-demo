@@ -1,0 +1,13 @@
+<div class="container">
+    <h1>{{ 'PRESUPUESTO' | translate }}</h1>
+    <br>
+    <form [formGroup]="formPresupuesto" (ngSubmit)="guardar()">
+        <div class="mb-3">
+            <label for="presupuesto" class="form-label">{{ 'PRESUPUESTO' | translate }}</label>
+            <input type="number" class="form-control" id="presupuesto" [ngClass]="{'is-invalid': hasErrors('presupuesto', 'required') || hasErrors('presupuesto', 'min')}" formControlName="presupuesto">
+            <div class="text-danger" *ngIf="hasErrors('presupuesto', 'required')">{{ 'PRESUPUESTO REQUIRED' | translate }}</div>
+            <div class="text-danger" *ngIf="hasErrors('presupuesto', 'min')">{{ 'PRESUPUESTO INVALIDO' | translate }}</div>
+        </div>       
+        <button type="submit" class="btn btn-primary">{{'NEXT' | translate}}</button>
+    </form>
+</div>
